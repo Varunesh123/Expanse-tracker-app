@@ -12,7 +12,7 @@ const Register = () => {
   const submitHandler = async(value) => {
     try {
       setLoading(true);
-      await axios.post("/users/register", value);
+      await axios.post("/api/v1/users/register", value);
       message.success("Resgistered Successfully");
       setLoading(false);
       navigate("/login");
@@ -28,8 +28,8 @@ const Register = () => {
   }, [navigate]);
 
   return (
-    <>
-      <div className='register-page'>
+    <div className='container'>
+      <div className='form-container'>
         {loading && <Spinner />}
         <Form layout='vertical' onFinish={submitHandler}>
           <h1>Register Form</h1>
@@ -47,12 +47,12 @@ const Register = () => {
           </Form.Item>
 
           <div className='d-flex justify-content-between'>
-            <Link to="/login">Already registered ? Click here to login</Link>
+            <Link to="/login">Click here to login</Link>
             <button className='btn btn-primary'>Register</button>
           </div>
         </Form>
       </div>
-    </>
+    </div>
   )
 }
 

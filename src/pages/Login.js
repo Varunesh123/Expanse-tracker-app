@@ -11,7 +11,7 @@ const Login = () => {
   const submitHandler = async(values) => {
     try {
       setLoading(true);
-      const {data} = await axios.post("/users/login", values);
+      const {data} = await axios.post("/api/v1/users/login", values);
       setLoading(false);
       message.success("Logged in Successfully");
       localStorage.setItem(
@@ -30,8 +30,8 @@ const Login = () => {
   }, [navigate]);
 
   return (
-    <>
-      <div className='register-page'>
+    <div className='container'>
+      <div className='form-container'>
         {loading && <Spinner/>}
         <Form layout='vertical' onFinish={submitHandler}>
           <h1>Login Form</h1>
@@ -45,12 +45,12 @@ const Login = () => {
           </Form.Item>
 
           <div className='d-flex justify-content-between'>
-            <Link to="/register">Not a user ? Click here to register</Link>
+            <Link to="/register">Click here to register</Link>
             <button className='btn btn-primary'>Login</button>
           </div>
         </Form>
       </div>
-    </>
+    </div>
   )
 }
 
